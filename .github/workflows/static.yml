@@ -1,0 +1,207 @@
+
+    .hero::before {
+      content: ""; position: absolute; inset: 0;
+      background:
+        linear-gradient(100deg, rgba(13, 13, 13, 0.92) 18%, rgba(13, 13, 13, 0.55) 55%, rgba(13, 13, 13, 0.88) 100%),
+        url("IMAGES/5.jpg") center/cover;
+        radial-gradient(circle at 18% 28%, rgba(255, 140, 0, 0.22), transparent 24%),
+        linear-gradient(100deg, rgba(13, 13, 13, 0.94) 18%, rgba(13, 13, 13, 0.72) 55%, rgba(13, 13, 13, 0.9) 100%);
+      transform: scale(1.05); animation: heroZoom 10s ease-out forwards;
+    }
+    .hero::after {
+      aspect-ratio: 1 / 1.05;
+      background:
+        linear-gradient(180deg, transparent 0%, rgba(13, 13, 13, 0.6) 100%),
+        url("IMAGES/3.jpg") center/cover;
+        url("ASSETS/ITEM MENU.png") center/cover;
+    }
+    .hero-main-logo {
+      width: min(100%, 360px);
+      margin-bottom: 1.25rem;
+      border-radius: 28px;
+      box-shadow: 0 26px 60px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.04);
+    }
+    .nav-mini-logo {
+      width: 42px;
+      height: 42px;
+      object-fit: cover;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 12px 24px rgba(255, 140, 0, 0.14);
+    }
+    .hero-card-content { padding: 1.4rem; display: grid; gap: 0.7rem; }
+    .hero-card-content small { color: var(--muted); text-transform: uppercase; letter-spacing: 0.16em; }
+    .hero-card-content strong { font-size: 1.2rem; }
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a class="brand" href="#home" aria-label="IYERVAL FOODS home">
+        <img src="file:///C:/Users/P%20S%20NARAYANAN/Downloads/IYERVAL%20FOODS%20LOGO/1.png" alt="IYERVAL FOODS logo" />
+        <img src="ASSETS/1.png" alt="IYERVAL FOODS logo" />
+        <div class="brand-copy">
+          <strong>IYERVAL FOODS</strong>
+          <span>Authentic Taste. Pure Tradition.</span>
+
+      <div class="nav-actions">
+        <button class="ghost-btn" id="adminToggleBtn" type="button">Admin Orders</button>
+        <img class="nav-mini-logo" src="ASSETS/2.png" alt="IYERVAL FOODS mini logo" />
+        <button class="icon-btn" id="navCartBtn" type="button" aria-label="Open cart">
+          <span aria-hidden="true">Cart</span>
+          <span class="cart-count" id="navCartCount">0</span>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <img class="hero-main-logo" src="ASSETS/1.png" alt="IYERVAL FOODS main logo" />
+          <span class="eyebrow">Premium South Indian Pantry & Kitchen</span>
+          <h1>Tradition, plated <span>for today.</span></h1>
+          <p>
+            Browse curated meals, snacks, and drinks from IYERVAL FOODS, add your favourites to cart,
+            Browse curated signature products from IYERVAL FOODS, add your favourites to cart,
+            and place your order in a smooth premium flow that saves every customer detail and order record.
+          </p>
+          <div class="hero-actions">
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>Total</span>
+        <strong class="highlight" id="cartTotal">â‚¹0.00</strong>
+        <strong class="highlight" id="cartTotal">Rs.0.00</strong>
+      </div>
+      <p class="cart-note">Orders are captured locally along with customer details for later admin review.</p>
+      <button class="checkout-btn" id="checkoutBtn" type="button">Checkout</button>
+          Notes
+          <textarea name="notes" placeholder="Add any delivery notes or preferences"></textarea>
+        </label>
+        <button class="submit-btn" type="submit">Place Order</button>
+        <button class="submit-btn" id="payNowBtn" type="button">Pay Now</button>
+        <button class="ghost-btn" type="submit">Place Order</button>
+      </form>
+    </div>
+  </div>
+    </div>
+  </div>
+
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script>
+    const STORAGE_KEYS = { cart: "iyerval-cart", orders: "orders" };
+    const menuItems = [
+      { id: 1, name: "Curd Chilli", category: "Snacks", price: 220, description: "Sun-dried curd chillies with bold spice, deep savoury notes, and a crisp finish.", image: "IMAGES/1.jpg" },
+      { id: 2, name: "Karuvadam Basket", category: "Snacks", price: 240, description: "Classic crunchy karuvadam served in a premium snack portion for sharing.", image: "IMAGES/2.jpg" },
+      { id: 3, name: "Avakaya Mango Pickle", category: "Meals", price: 260, description: "A rich Andhra-style mango pickle with a balanced heat and aromatic sesame oil.", image: "IMAGES/5.jpg" },
+      { id: 4, name: "Vadam Selection", category: "Snacks", price: 210, description: "Crisp hand-fried vadam with a light, airy bite and signature spice seasoning.", image: "IMAGES/4.jpg" },
+      { id: 5, name: "Curd Rice Bowl", category: "Meals", price: 320, description: "Cooling curd rice finished with tempering, pomegranate, curry leaves, and pickle.", image: "IMAGES/default.jpg" },
+      { id: 6, name: "Mini Tiffin Platter", category: "Meals", price: 420, description: "A compact premium platter with idli, dosa bites, chutneys, and podi butter.", image: "IMAGES/default.jpg" },
+      { id: 7, name: "Filter Coffee", category: "Drinks", price: 140, description: "Strong South Indian filter coffee with chicory depth and velvety microfoam.", image: "IMAGES/default.jpg" },
+      { id: 8, name: "Panakam Cooler", category: "Drinks", price: 160, description: "Jaggery, dry ginger, cardamom, and lemon in a chilled festive spiced cooler.", image: "IMAGES/default.jpg" }
+      { id: 4, name: "Vadam Selection", category: "Snacks", price: 210, description: "Crisp hand-fried vadam with a light, airy bite and signature spice seasoning.", image: "IMAGES/4.jpg" }
+    ];
+
+    let selectedFilter = "All";
+    const checkoutModal = document.getElementById("checkoutModal");
+    const closeCheckoutBtn = document.getElementById("closeCheckoutBtn");
+    const checkoutForm = document.getElementById("checkoutForm");
+    const payNowBtn = document.getElementById("payNowBtn");
+    const checkoutSummaryList = document.getElementById("checkoutSummaryList");
+    const checkoutSummaryTotal = document.getElementById("checkoutSummaryTotal");
+    const confirmationModal = document.getElementById("confirmationModal");
+      }
+    }
+
+    function placeOrder(event) {
+      event.preventDefault();
+      if (!cart.length) return;
+      const formData = new FormData(checkoutForm);
+    function buildOrder(formData, paymentStatus = "pending") {
+      const timestamp = Date.now();
+      const order = {
+      return {
+        orderId: `IYF-${timestamp}`,
+        name: formData.get("name").toString().trim(),
+        phone: formData.get("phone").toString().trim(),
+        notes: formData.get("notes").toString().trim(),
+        items: cart.map((item) => ({ id: item.id, name: item.name, price: item.price, quantity: item.quantity })),
+        total: getCartTotal(),
+        paymentStatus,
+        timestamp
+      };
+    }
+
+    function finalizeOrder(order) {
+      orders.push(order);
+      saveState(STORAGE_KEYS.orders, orders);
+      cart = [];
+      adminPanel.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function startRazorpayPayment() {
+      if (!cart.length) return;
+      const formData = new FormData(checkoutForm);
+      const customerName = formData.get("name").toString().trim();
+      const customerPhone = formData.get("phone").toString().trim();
+      const customerAddress = formData.get("address").toString().trim();
+
+      if (!customerName || !customerPhone || !customerAddress) {
+        checkoutForm.reportValidity();
+        return;
+      }
+
+      if (typeof Razorpay === "undefined") {
+        alert("Razorpay failed to load. Try again.");
+        return;
+      }
+
+      const totalAmount = getCartTotal();
+      const orderDraft = buildOrder(formData, "paid");
+
+      const options = {
+        key: "YOUR_RAZORPAY_KEY",
+        amount: totalAmount * 100,
+        currency: "INR",
+        name: "IYERVAL FOODS",
+        description: "Order Payment",
+        handler: function (response) {
+          orderDraft.paymentStatus = "paid";
+          orderDraft.razorpayPaymentId = response.razorpay_payment_id || "";
+          finalizeOrder(orderDraft);
+          alert("Payment successful!");
+        },
+        prefill: {
+          name: customerName,
+          contact: customerPhone
+        },
+        theme: {
+          color: "#ff8c00"
+        }
+      };
+
+      const razorpay = new Razorpay(options);
+      razorpay.on("payment.failed", function () {
+        alert("Payment failed. Try again.");
+      });
+      razorpay.open();
+    }
+
+    function placeOrder(event) {
+      event.preventDefault();
+      if (!cart.length) return;
+      const formData = new FormData(checkoutForm);
+      const order = buildOrder(formData, "unpaid");
+
+      if (!order.name || !order.phone || !order.address) {
+        checkoutForm.reportValidity();
+        return;
+      }
+
+      finalizeOrder(order);
+    }
+
+    function toggleAdminPanel() {
+      adminPanel.classList.toggle("visible");
+      renderOrders();
+      closeCheckoutBtn.addEventListener("click", closeCheckout);
+      closeConfirmationBtn.addEventListener("click", closeConfirmation);
+      continueBrowsingBtn.addEventListener("click", closeConfirmation);
+      payNowBtn.addEventListener("click", startRazorpayPayment);
+      checkoutForm.addEventListener("submit", placeOrder);
+      adminToggleBtn.addEventListener("click", toggleAdminPanel);
+      refreshOrdersBtn.addEventListener("click", renderOrders);
